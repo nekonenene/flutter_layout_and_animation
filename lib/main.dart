@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Layout Demo'),
         ),
-        body: Column(
+        // 画面の小さいデバイスでも表示可能なよう、Column でなく ListView を用いてスクロールできるように
+        body: ListView(
           children: <Widget>[
             Image.asset(
               'images/lake.jpg',
