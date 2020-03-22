@@ -57,11 +57,7 @@ class MyApp extends StatelessWidget {
               )
             ],
           )),
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          Text('41'),
+          FavoriteWidget(),
         ],
       ),
     );
@@ -123,9 +119,44 @@ class FavoriteWidget extends StatefulWidget {
 }
 
 class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return null;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+            icon: _isFavorited ? Icon(Icons.star) : Icon(Icons.star_border),
+            color: Colors.red[500],
+            onPressed: _toggleFavorite,
+          ),
+        ),
+        // SizedBox ( https://api.flutter.dev/flutter/widgets/SizedBox-class.html ) を使用し横幅を規定することで、
+        // スターの位置が移動してしまう現象を防ぐ
+        SizedBox(
+          width: 18,
+          child: Container(
+            child: Text('$_favoriteCount'),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _toggleFavorite() {
+    // setState が超大事！ これがないと見た目が変化しない
+    setState(() {
+      if (_isFavorited) {
+        _favoriteCount -= 1;
+      } else {
+        _favoriteCount += 1;
+      }
+
+      _isFavorited = !_isFavorited;
+    });
   }
 }
