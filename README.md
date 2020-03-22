@@ -11,5 +11,5 @@ https://flutter.dev/docs/reference/tutorials
 今はまだ Layout 編が終わったところ。
 
 <div align="center">
-    <img src="./screenshot.png" alt="Flutter UI Tutorial Screenshot" width="auto" height="400rem">
+    <img src="./screenshot.png" alt="Flutter UI Tutorial Screenshot" width="420rem" height="auto">
 </div>
