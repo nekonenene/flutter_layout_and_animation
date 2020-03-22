@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Layout Demo'),
         ),
-        body: Center(
-          child: titleSection,
+        body: Column(
+          children: <Widget>[titleSection],
         ),
       )
     );
