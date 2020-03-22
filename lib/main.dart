@@ -5,20 +5,27 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Color color = Theme.of(context).primaryColor;
-
-    Widget buttonSection = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildButtonColumn(color, Icons.call, 'CALL'),
-          _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-          _buildButtonColumn(color, Icons.share, 'SHARE'),
-        ],
+    return MaterialApp(
+      title: 'Flutter Layout Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Layout Demo'),
+        ),
+        body: Column(
+          children: <Widget>[
+            titleSection(),
+            buttonSection(Theme.of(context).primaryColor),
+          ],
+        ),
+      )
     );
+  }
 
-    Widget titleSection = Container(
+  Widget titleSection() {
+    return Container(
       padding: EdgeInsets.all(32),
       child: Row(
         children: [
@@ -50,23 +57,18 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
+  }
 
-    return MaterialApp(
-      title: 'Flutter Layout Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+  Widget buttonSection(Color color) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildButtonColumn(color, Icons.call, 'CALL'),
+          _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+          _buildButtonColumn(color, Icons.share, 'SHARE'),
+        ],
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Layout Demo'),
-        ),
-        body: Column(
-          children: <Widget>[
-            titleSection,
-            buttonSection,
-          ],
-        ),
-      )
     );
   }
 
